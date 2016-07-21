@@ -1,0 +1,2 @@
+# <%= @host_entry -%> with dumpetype <%= @dumptype -%><% "\n" %>
+<% @disk.each do |disk_entry| -%><%= "#{host_entry} #{disk_entry} #{dumptype}-#{ssh_port}\n" %><% end -%>

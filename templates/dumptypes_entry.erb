@@ -1,0 +1,140 @@
+define dumptype "<%= @dump_name -%>" {
+<% if @inherit != '' -%>
+	<%= @inherit %>
+<% end -%>
+<% if @comment != '' -%>
+	comment "<%= @comment %>"
+<% end -%>
+<% if @auth != '' -%>
+	auth "<%= @auth %>"
+<% end -%>
+<% if @amanda_path != '' -%>
+	amanda-path "<%= @amanda_path %>"
+<% end -%>
+<% if @client_username != '' -%>
+	client-username "<%= @client_username %>"
+<% end -%>
+<% if @client_port != '' -%>
+	client-port <%= @client_port %>
+<% end -%>
+<% if @bumpsize != '' -%>
+	bumpsize <%= @bumpsize %>
+<% end -%>
+<% if @bumppercent != '' -%>
+	bumppercent <%= @bumppercent %>
+<% end -%>
+<% if @bumpmult != '' -%>
+	bumpmult <%= @bumpmult %>
+<% end -%>
+<% if @bumpdays != '' -%>
+	bumpdays <%= @bumpdays %>
+<% end -%>
+<% if @compress != '' -%>
+	compress <%= @compress %> <%= @compress_type %>
+<% if @compress_type == 'custom' -%>
+	<%= @compress %>-custom-compress "<%= @compress_program -%>"
+<% end -%>
+<% end -%>
+<% if @dumpcycle != '' -%>
+	dumpcycle <%= @dumpcycle %>
+<% end -%>
+<% if @encrypt != '' -%>
+	encrypt <%= @encrypt %>
+	<%= @encrypt -%>-encrypt "<%= @encrypt_program %>"
+	<%= @encrypt -%>-encrypt-option-string "<%= @encrypt_option_string %>"
+<% end -%>
+<% if @estimate != '' -%>
+	estimate <%= @estimate %>
+<% end -%>
+<% if @exclude == 'file' -%>
+<%  @exclude_files.each do |exfile|-%>
+	exclude file append "<%= exfile %>"
+<% end -%>
+<% end -%>
+<% if @exclude == 'list' -%>
+	exclude list optional "<%= @exclude_list -%>"
+<% end -%>
+<% if @holdingdisk != '' -%>
+	holdingdisk <%= @holdingdisk %>
+<% end -%>
+<% if @ignore != '' -%>
+	ignore <%= @ignore %>
+<% end -%>
+<% if @include == 'file' -%>
+<%  @include_files.each do |infile|-%>
+    include file append "<%= infile -%>"
+<%- end -%>
+<%- end -%>
+<% if @include == 'list' -%>
+	include list optional "<%= @include_list -%>"
+<% end -%>
+<% if @index != '' -%>
+	index <%= @index %>
+<% end -%>
+<% if @kencrypt != '' -%>
+	kencrypt <%= @kencrypt %>
+<% end -%>
+<% if @maxdumps != '' -%>
+	maxdumps <%= @maxdumps %>
+<% end -%>
+<% if @maxpromoteday != '' -%>
+	maxpromoteday <%= @maxpromoteday %>
+<% end -%>
+<% if @max_warnings != '' -%>
+	max-warnings <%= @max_warnings %>
+<% end -%>
+<% if @priority != '' -%>
+	priority <%= @priority %>
+<% end -%>
+<% if @program != '' -%>
+	program "<%= @program %>"
+<% end -%>
+<% if @application != '' -%>
+	application <%= @application %>
+<% end -%>
+<% if @script != '' -%>
+	script <%= @script %>
+<% end -%>
+<% if @property.length >= 1 -%>
+<%  @property.each do |prop| -%>
+    property append "<%= prop %>"
+<% end -%>
+<% end -%>
+<% if @record != '' -%>
+	record <%= @script %>
+<% end -%>
+<% if @skip_full != '' -%>
+	skip-full <%= @skip_full %>
+<% end -%>
+<% if @skip_incr != '' -%>
+	skip-incr <%= @skip_incr %>
+<% end -%>
+<% if @ssh_keys != '' -%>
+	ssh-keys "<%= @ssh_keys -%>"
+<% end -%>
+<% if @starttime != '' -%>
+	starttime <%= @starttime %>
+<% end -%>
+<% if @strategy != '' -%>
+	strategy <%= @strategy %>
+<% end -%>
+<% if @allow_split != '' -%>
+	allow-split <%= @allow_split %>
+<% end -%>
+<% if @tape_splitsize != '' -%>
+	tape-splitsize <%= @tape_splitsize %>
+<% end -%>
+<% if @split_diskbuffer != '' -%>
+	split-diskbuffer "<%= @split_diskbuffer -%>"
+<% end -%>
+<% if @fallback_splitsize != '' -%>
+	fallback-splitsize <%= @fallback_splitsize %>
+<% end -%>
+<% if @recovery_limit != '' -%>
+	recovery-limit <%= @recovery_limit %>
+<% end -%>
+<% if @dump_limit != '' -%>
+	dump-limit <%= @dump_limit %>
+<% end -%>
+}
+

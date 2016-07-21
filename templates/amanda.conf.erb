@@ -1,0 +1,37 @@
+# Controlled by Puppet
+org "<%= @org %>"
+dumpuser "<%= @dumpuser %>"
+mailto "<%= @mailto %>"
+dumpcycle <%= @dumpcycle %>
+runspercycle <%= @runspercycle %>
+tapecycle <%= @tapecycle %> tapes
+runtapes <%= @runtapes %>
+
+define changer <%= @config %>_vtapes {
+    tpchanger "chg-disk:/backup/<%= @config %>/vtapes"
+    property "num-slot" "<%= @tapecycle %>"
+    property "auto-create-slot" "yes"
+}
+
+tpchanger "<%= @config %>_vtapes"
+
+tapetype harddisk
+labelstr "<%= @config %>-[0-9]+"
+dtimeout <%= @dtimeout %>
+ctimeout <%= @ctimeout %>
+etimeout <%= @etimeout %>
+
+define tapetype harddisk {
+       comment "Virtual Tapes"
+       length <%= @tapelength %>
+}
+
+
+holdingdisk hd1 {
+    directory "<%= @holding_drive %>"
+    use 1024 mbytes
+    chunksize 1 mbyte
+}
+
+includefile	"dumptypes.conf"
+includefile "advanced.conf"
